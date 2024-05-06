@@ -12,7 +12,7 @@
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
 
-    <title>Data Menu</title>
+    <title>Hasil K-Means</title>
 </head>
 <body>
     <div class="flex">
@@ -29,77 +29,54 @@
             
             <hr class="opacity-50">
             
-            <h1 class="mt-4 uppercase text-xs opacity-65">Data</h1>
-            <a href="" class="flex items-center my-4">
+            <h1 class="mt-4 uppercase text-xs opacity-60">Data</h1>
+            <a href="menu.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
                 <i class="fa fa-burger mr-4"></i>
                 <h2>Data Menu</h2>
             </a>
-            <a href="" class="flex items-center my-4">
+            <a href="penjualan.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
                 <i class="fa fa-store mr-4"></i>
                 <h2>Data Penjualan</h2>
             </a>
-            <a href="" class="flex items-center my-4">
+            <a href="cluster.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
                 <i class="fa fa-circle-nodes mr-4"></i>
                 <h2>Data Cluster</h2>
             </a>
-            <a href="" class="flex items-center my-4">
+            <a href="centroid.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
                 <i class="fa fa-arrows-to-dot mr-4"></i>
                 <h2>Data Centroid</h2>
             </a>
-            
+
             <hr class="opacity-50">
             
-            <h1 class="mt-4 uppercase text-xs opacity-65">K-Means</h1>
-            <a href="" class="flex items-center my-4">
+            <h1 class="mt-4 uppercase text-xs opacity-60">K-Means</h1>
+            <a href="k-means.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
                 <i class="fa fa-chart-simple mr-4"></i>
                 <h2>Proses K-Means</h2>
             </a>
-            <a href="" class="flex items-center my-4">
+            <a href="hasil.html" class="flex items-center my-4">
                 <i class="fa fa-print mr-4"></i>
                 <h2>Cetak</h2>
             </a>
-            
+
             <hr class="opacity-50">
-            
-            <a href="" class="flex items-center my-4">
+
+            <a href="login.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
                 <i class="fa fa-arrow-right-from-bracket mr-4"></i>
                 <h2>Keluar</h2>
             </a>
         </div>
         
         <!-- content -->
-        <div class="w-full px-10 bg-slate-100">
+        <div class="w-full max-h-screen px-10 bg-slate-100 overflow-y-scroll">
             <div class="text-3xl text-gray-800 mt-8 mb-6">
-                <h1>Data Menu</h1>
+                <h1>Hasil K-Means</h1>
             </div>
             
-            <div class="w-2/3 border rounded overflow-hidden shadow-lg mb-6">
+            <!-- hasil k-means -->
+            <div class="w-full border rounded overflow-hidden shadow-lg mb-6">
                 <div class="px-6 py-3 bg-teal-600">
-                    <h2 class="text-white text-lg font-semibold">Tambah Data</h2>
-                </div>
-                
-                <div class="p-6 bg-white">
-                    <form action="">
-                        <div class="flex items-center mb-4">
-                            <label for="" class="w-80 font-medium">Kode Menu</label>
-                            <input type="text" class="w-full px-3 py-1 border rounded border-gray-300 bg-gray-50">
-                        </div>
-                        <div class="flex items-center mb-4">
-                            <label for="" class="w-80 font-medium">Kode Menu</label>
-                            <input type="text" class="w-full px-3 py-1 border rounded border-gray-300 bg-gray-50">
-                        </div>
-                        <div class="flex justify-end">
-                            <div class="text-white font-medium">
-                                <button class="px-10 py-2 rounded bg-teal-600 hover:bg-teal-700">Simpan</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="w-full border rounded overflow-hidden shadow-lg">
-                <div class="px-6 py-3 bg-teal-600">
-                    <h2 class="text-white text-lg font-semibold">Tampil Data</h2>
+                    <h2 class="text-white text-lg font-semibold">Data Hasil K-Means</h2>
                 </div>
                 
                 <div class="p-6 bg-white">
@@ -108,70 +85,112 @@
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 border">
-                                        kode menu
+                                        no
                                     </th>
                                     <th scope="col" class="px-6 py-3 border">
                                         nama menu
                                     </th>
                                     <th scope="col" class="px-6 py-3 border">
-                                        aksi
+                                        januari
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        februari
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        maret
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        jarak terdekat
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        cluster
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="odd:bg-white even:bg-gray-50">
                                     <td scope="row" class="px-6 py-4 border">
-                                        m-01
+                                        1
                                     </td>
                                     <td class="px-6 py-4 border">
                                         Ayam Penyet
                                     </td>
                                     <td class="px-6 py-4 border">
-                                        <a href="" class="font-medium text-blue-600 hover:underline">Edit</a>
-                                        <span class="mx-1">/</span>
-                                        <a href="" class="font-medium text-red-600 hover:underline">Hapus</a>
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        281098
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        C1
                                     </td>
                                 </tr>
                                 <tr class="odd:bg-white even:bg-gray-50">
                                     <td scope="row" class="px-6 py-4 border">
-                                        m-02
+                                        2
                                     </td>
                                     <td class="px-6 py-4 border">
-                                        Ayam Pecak
+                                        Ayam Penyet
                                     </td>
                                     <td class="px-6 py-4 border">
-                                        <a href="" class="font-medium text-blue-600 hover:underline">Edit</a>
-                                        <span class="mx-1">/</span>
-                                        <a href="" class="font-medium text-red-600 hover:underline">Hapus</a>
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        281098
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        C3
                                     </td>
                                 </tr>
                                 <tr class="odd:bg-white even:bg-gray-50">
                                     <td scope="row" class="px-6 py-4 border">
-                                        m-03
+                                        3
                                     </td>
                                     <td class="px-6 py-4 border">
-                                        Nasi Goreng Kampung
+                                        Ayam Penyet
                                     </td>
                                     <td class="px-6 py-4 border">
-                                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="font-medium text-blue-600 hover:underline" type="button">
-                                            Edit
-                                        </button>
-                                        <span class="mx-1">/</span>
-                                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="font-medium text-red-600 hover:underline" type="button">
-                                            Hapus
-                                        </button>
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        281098
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        C1
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    
                 </div>
             </div>
-            
-            
-            <!-- pop up modal --> 
-            <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+            <div class="flex justify-end my-5">
+                <div class="text-white font-medium">
+                    <button class="px-10 py-2 rounded bg-teal-600 hover:bg-teal-700">Cetak Hasil</button>
+                </div>
+            </div>
+
+            <!-- pop up hapus --> 
+            <div id="popup-hapus" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative p-4 w-1/2 max-h-full">
                     <div class="relative bg-white rounded-lg shadow">
                         <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
@@ -185,10 +204,10 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg>
                             <h3 class="mb-5 text-2xl font-normal text-gray-500">Apakah kamu yakin ingin menghapus data?</h3>
-                            <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            <button data-modal-hide="popup-hapus" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                 Ya, hapus
                             </button>
-                            <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, batal</button>
+                            <button data-modal-hide="popup-hapus" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, batal</button>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link Script TailwindCss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
+
+    <title>Proses K-Means</title>
+</head>
+<body>
+    <div class="flex">
+        <!-- sidebar -->
+        <div class="w-72 px-8 h-screen text-white text-sm font-semibold bg-teal-600">
+            <img src="https://i.pinimg.com/564x/27/87/58/278758c917eb70d151d8c4dcb4807c8a.jpg" alt="logo" class="w-24 h-24 rounded-full mx-auto my-8">
+            
+            <hr class="opacity-50">
+            
+            <a href="" class="flex items-center my-5">
+                <i class="fa fa-home mr-4"></i>
+                <h2>Menu Utama</h2>
+            </a>
+            
+            <hr class="opacity-50">
+            
+            <h1 class="mt-4 uppercase text-xs opacity-60">Data</h1>
+            <a href="menu.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
+                <i class="fa fa-burger mr-4"></i>
+                <h2>Data Menu</h2>
+            </a>
+            <a href="penjualan.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
+                <i class="fa fa-store mr-4"></i>
+                <h2>Data Penjualan</h2>
+            </a>
+            <a href="cluster.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
+                <i class="fa fa-circle-nodes mr-4"></i>
+                <h2>Data Cluster</h2>
+            </a>
+            <a href="centroid.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
+                <i class="fa fa-arrows-to-dot mr-4"></i>
+                <h2>Data Centroid</h2>
+            </a>
+
+            <hr class="opacity-50">
+            
+            <h1 class="mt-4 uppercase text-xs opacity-60">K-Means</h1>
+            <a href="k-means.html" class="flex items-center my-4">
+                <i class="fa fa-chart-simple mr-4"></i>
+                <h2>Proses K-Means</h2>
+            </a>
+            <a href="hasil.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
+                <i class="fa fa-print mr-4"></i>
+                <h2>Cetak</h2>
+            </a>
+
+            <hr class="opacity-50">
+
+            <a href="login.html" class="flex items-center my-4 opacity-60 hover:opacity-100">
+                <i class="fa fa-arrow-right-from-bracket mr-4"></i>
+                <h2>Keluar</h2>
+            </a>
+        </div>
+        
+        <!-- content -->
+        <div class="w-full max-h-screen px-10 bg-slate-100 overflow-y-scroll">
+            <div class="text-3xl text-gray-800 mt-8 mb-6">
+                <h1>Proses K-Means</h1>
+            </div>
+            
+            <div class="columns-2 gap-6">
+                <div class="w-full border rounded overflow-hidden shadow-lg mb-6">
+                    <div class="px-6 py-3 bg-teal-600">
+                        <h2 class="text-white text-lg font-semibold">Data Penjualan</h2>
+                    </div>
+                    
+                    <div class="p-6 bg-white">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-500 border-2">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            nama menu
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            januari
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            februari
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            maret
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd:bg-white even:bg-gray-50">
+                                        <td scope="row" class="px-6 py-4 border">
+                                            Ayam Penyet
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            13
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            18
+                                        </td>
+                                    </tr>
+                                    <tr class="odd:bg-white even:bg-gray-50">
+                                        <td scope="row" class="px-6 py-4 border">
+                                            Ayam Pecak
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            14
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            29
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            24
+                                        </td>
+                                    </tr>
+                                    <tr class="odd:bg-white even:bg-gray-50">
+                                        <td scope="row" class="px-6 py-4 border">
+                                            Nasi Goreng Kampung
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            18
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            25
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            10
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tampil Centroid -->
+                <div class="w-full border rounded overflow-hidden shadow-lg mb-6">
+                    <div class="px-6 py-3 bg-teal-600">
+                        <h2 class="text-white text-lg font-semibold">Centroid</h2>
+                    </div>
+                    
+                    <div class="p-6 bg-white">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-500 border-2">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            kode
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            nama makanan
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            januari
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            februari
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 border">
+                                            maret
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd:bg-white even:bg-gray-50">
+                                        <td scope="row" class="px-6 py-4 border">
+                                            C1
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            Ayam Penyet
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                    </tr>
+                                    <tr class="odd:bg-white even:bg-gray-50">
+                                        <td scope="row" class="px-6 py-4 border">
+                                            C2
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            Ayam Penyet
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                    </tr>
+                                    <tr class="odd:bg-white even:bg-gray-50">
+                                        <td scope="row" class="px-6 py-4 border">
+                                            C3
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            Ayam Penyet
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                        <td class="px-6 py-4 border">
+                                            20
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- tombol proses k-means -->
+            <div class="text-white font-medium mb-4">
+                <button class="px-10 py-2 rounded bg-teal-600 hover:bg-teal-700">Hitung K-Means</button>
+            </div>
+            
+            <!-- hasil k-means -->
+            <div class="w-full border rounded overflow-hidden shadow-lg mb-6">
+                <div class="px-6 py-3 bg-teal-600">
+                    <h2 class="text-white text-lg font-semibold">Hasil K-Means</h2>
+                </div>
+                
+                <div class="p-6 bg-white">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 border-2">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        no
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        nama menu
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        januari
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        februari
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        maret
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        jarak terdekat
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 border">
+                                        cluster
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd:bg-white even:bg-gray-50">
+                                    <td scope="row" class="px-6 py-4 border">
+                                        1
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        Ayam Penyet
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        281098
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        C1
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-50">
+                                    <td scope="row" class="px-6 py-4 border">
+                                        2
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        Ayam Penyet
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        281098
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        C3
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-50">
+                                    <td scope="row" class="px-6 py-4 border">
+                                        3
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        Ayam Penyet
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        20
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        281098
+                                    </td>
+                                    <td class="px-6 py-4 border">
+                                        C1
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end my-5">
+                <div class="text-white font-medium">
+                    <button class="px-10 py-2 rounded bg-teal-600 hover:bg-teal-700">Simpan Hasil</button>
+                </div>
+            </div>
+
+            <!-- pop up hapus --> 
+            <div id="popup-hapus" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-1/2 max-h-full">
+                    <div class="relative bg-white rounded-lg shadow">
+                        <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                        <div class="p-5 text-center">
+                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                            <h3 class="mb-5 text-2xl font-normal text-gray-500">Apakah kamu yakin ingin menghapus data?</h3>
+                            <button data-modal-hide="popup-hapus" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Ya, hapus
+                            </button>
+                            <button data-modal-hide="popup-hapus" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, batal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- batas content -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+</html>
